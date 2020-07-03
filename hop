@@ -1,0 +1,11 @@
+import requests
+headers={'User-Agent':'Mozill/5.0'}
+response = requests.get('http://google.com',headers=headers)
+if response.history:
+    print("Request was redirected")
+    for resp in response.history:
+        print(resp.status_code, resp.url)
+    print("Final destination:")
+    print(response.status_code, response.url)
+else:
+    print("Request was not redirected")
